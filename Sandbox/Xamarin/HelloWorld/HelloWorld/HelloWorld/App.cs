@@ -6,6 +6,7 @@ using Prism.Mvvm;
 using Prism.Navigation;
 using Prism.Unity;
 using System.Linq;
+using ModuleA.Views;
 using Xamarin.Forms;
 
 namespace HelloWorld
@@ -24,6 +25,8 @@ namespace HelloWorld
             Container.RegisterTypeForNavigation<MainPage, SomeOtherViewModel>(); //override viewmodel convention
             Container.RegisterTypeForNavigation<MyNavigationPage>();
             Container.RegisterTypeForNavigation<MyMasterDetail>();
+            Container.RegisterTypeForNavigation<ViewD>();
+            Container.RegisterTypeForNavigation<ViewE>();
         }
 
         protected override void ConfigureModuleCatalog()

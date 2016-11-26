@@ -3,11 +3,10 @@ using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
 using Prism;
-using Prism.AppModel;
 
 namespace ModuleA.ViewModels
 {
-    public class ViewAViewModel : BindableBase, INavigationAware, IActiveAware, IApplicationLifecycle
+    public class ViewAViewModel : BindableBase, INavigationAware, IActiveAware
     {
         private readonly INavigationService _navigationService;
 
@@ -88,11 +87,12 @@ namespace ModuleA.ViewModels
 
         public void OnNavigatedTo(NavigationParameters parameters)
         {
-            var navigationMode = parameters.GetNavigationMode();
-            if (navigationMode == NavigationMode.Back)
-                Title = "Went Back";
-            else if (navigationMode == NavigationMode.New)
-                Title = "Went to New Page";
+            Title = "GoBack or Forward";
+            // var navigationMode = parameters.GetNavigationMode();
+            //if (navigationMode == NavigationMode.Back)
+            //    Title = "Went Back";
+            //else if (navigationMode == NavigationMode.New)
+            //    Title = "Went to New Page";
         }
 
         public void OnNavigatingTo(NavigationParameters parameters)

@@ -43,6 +43,8 @@ namespace ModuleA.ViewModels
         public DelegateCommand SaveCommand { get; private set; }
 
         public DelegateCommand ResetCommand { get; private set; }
+        public DelegateCommand<string> GoToDCommand { get; private set; }
+        
 
         public ViewBViewModel(INavigationService navigationService, IApplicationCommands applicationCommands)
         {
@@ -50,7 +52,7 @@ namespace ModuleA.ViewModels
             NavigateCommand = new DelegateCommand(Navigate).ObservesCanExecute((vm) => CanNavigate);
             SaveCommand = new DelegateCommand(Save);
             ResetCommand = new DelegateCommand(Reset);
-
+            GoToDCommand = new DelegateCommand<string>(NavigateToD);
             applicationCommands.SaveCommand.RegisterCommand(SaveCommand);
             applicationCommands.ResetCommand.RegisterCommand(ResetCommand);
         }
@@ -58,6 +60,13 @@ namespace ModuleA.ViewModels
         private void Reset()
         {
             Title = "View B";
+        }
+
+        async void NavigateToD(string name)
+        {
+            CanNavigate = false;
+            await _navigationService.NavigateAsync(name);
+            CanNavigate = true;
         }
 
         async void Navigate()

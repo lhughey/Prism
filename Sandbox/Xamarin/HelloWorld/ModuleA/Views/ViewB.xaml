@@ -9,6 +9,6 @@
   <StackLayout>
     <Label Text="{Binding Title}" VerticalOptions="Center" HorizontalOptions="Center" />
     <Button Command="{Binding NavigateCommand}" Text="Navigate" />
+        <Button Command="{Binding GoToDCommand}" CommandParameter="ViewD" Text="Go Forward To D" />
   </StackLayout>
-
 </ContentPage>
